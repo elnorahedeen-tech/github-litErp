@@ -1,0 +1,17 @@
+{
+  "scope": "Manual resolution of full-scope strict audit findings; raw result is retained",
+  "raw_strict_exit_code": 1,
+  "rule": "affordance.actionless-button",
+  "cause": "The scanner recognizes inline handlers but not addEventListener in preview/preview.js",
+  "buttons": [
+    {"id": "clear-search", "action": "clear query, reset page and restore input focus", "evidence": "browser.json: IME search, immediate clear"},
+    {"id": "reset-filters", "action": "clear both filters and render results", "evidence": "browser.json: empty recovery"},
+    {"id": "previous-page", "action": "previous page and selection reset", "evidence": "tools/verify_preview.py previous-page click"},
+    {"id": "next-page", "action": "next page and selection reset", "evidence": "browser.json: page selection and URL refresh"},
+    {"id": "close-detail", "action": "close dialog, restore route and trigger focus", "evidence": "tools/verify_preview.py close-detail click"},
+    {"id": "keep-editing", "action": "close guard and preserve input", "evidence": "browser.json: unsaved navigation keep/discard"},
+    {"id": "discard-changes", "action": "reset synthetic form, invalidate pending completion and navigate", "evidence": "browser.json: unsaved navigation keep/discard"}
+  ],
+  "unresolved_findings_after_manual_review": 0,
+  "not_claimed": "The raw strict audit itself is not green; no production backend coverage"
+}

@@ -1,0 +1,10 @@
+/* 仅预览外壳用（来自交付包 preview/preview.css）。不随 ERP 发布。 */
+.preview-nav-note { padding: 18px 10px; font-size: 12px; color: #78716c; line-height: 1.7; }
+body[data-preview-mode="embedded"] { padding: 24px; }
+body[data-preview-mode="embedded"] > :is(header, nav) { display: none; }
+body[data-preview-mode="embedded"] > main[data-apb-erp] { margin: 0 auto !important; padding: 0 !important; max-width: 1480px; }
+@media (max-width: 760px) {
+  .preview-nav-note { display: none; }
+  .admin-brand { font-size: 13px; }
+  body[data-preview-mode="embedded"] { padding: 16px; }
+}

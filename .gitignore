@@ -1,0 +1,11 @@
+# 已解压到 sample/erp/，压缩包不入库
+sample/*.rar
+
+# 系统/编辑器杂项
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+node_modules/
+__pycache__/

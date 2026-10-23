@@ -1,0 +1,10 @@
+/* This shell is for an offline handoff preview only. Do not ship with ERP. */
+.preview-nav-note { padding: 18px 10px; font-size: 12px; color: #78716c; line-height: 1.7; }
+body[data-preview-mode="embedded"] { padding: 24px; }
+body[data-preview-mode="embedded"] > :is(header,nav) { display: none; }
+body[data-preview-mode="embedded"] > main[data-apb-erp] { margin: 0 auto !important; padding: 0 !important; max-width: 1480px; }
+@media (max-width: 760px) {
+  .preview-nav-note { display: none; }
+  .admin-brand { font-size: 13px; }
+  body[data-preview-mode="embedded"] { padding: 16px; }
+}

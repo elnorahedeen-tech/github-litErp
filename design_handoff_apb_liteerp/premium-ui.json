@@ -1,0 +1,15 @@
+{
+  "profile": "product-admin",
+  "sourceRoots": ["assets", "preview", "examples"],
+  "locale": "zh-CN",
+  "canonicalMap": "UX-CONTRACT.md",
+  "requiredCapabilities": ["Table Selection", "Select/Listbox", "Date", "Form", "Scrollbar", "Toast", "CRUD"],
+  "ownership": {"Select/Listbox": "native", "Date": "typed"},
+  "requiredCommands": ["tokens", "browser", "syntax"],
+  "commands": {
+    "tokens": "python3 tools/build_tokens.py --check (inside APB checkout)",
+    "browser": "python3 tools/verify_preview.py",
+    "syntax": "node --check preview/preview.js"
+  },
+  "evidence": {"failurePaths": "verification/browser.json"}
+}

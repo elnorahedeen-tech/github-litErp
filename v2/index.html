@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>LiteERP · AutoPrintBot</title>
+  <link rel="icon" href="data:,">
+  <!-- 仅预览：模拟 APB 宿主外壳。正式接入时由 APB 提供 admin.css，不加载本文件 -->
+  <link rel="stylesheet" href="host-preview/host-reference.css">
+  <link rel="stylesheet" href="host-preview/preview-shell.css">
+  <!-- ERP 内容样式：按顺序加载 -->
+  <link rel="stylesheet" href="assets/tokens.css">
+  <link rel="stylesheet" href="assets/apb-erp.css">
+  <link rel="stylesheet" href="assets/liteerp.css">
+</head>
+<body>
+  <!-- ===== 以下 header / nav 仅为预览用的 APB 外壳（?mode=embedded 时隐藏） ===== -->
+  <header class="admin-topbar">
+    <div class="admin-brand"><span class="admin-brand-mark">IC</span><span>AutoPrintBot 云端后台</span></div>
+    <div class="admin-top-spacer"></div><span class="admin-env">预览 · 模拟数据</span>
+  </header>
+  <nav class="admin-nav" aria-label="APB 主导航（预览）">
+    <div class="sidebar-brand"><span class="admin-brand-mark">IC</span><span class="sidebar-title">精诚图文广告</span></div>
+    <div class="nav-section">业务</div>
+    <a href="#/frontdesk" class="active" aria-current="page"><span class="nav-icon" aria-hidden="true">▦</span><span class="nav-label">LiteERP</span></a>
+    <p class="preview-nav-note">此侧栏与顶栏模拟 APB 宿主，仅用于预览。ERP 只绘制右侧内容区。</p>
+  </nav>
+  <!-- ===== ERP 内容根 ===== -->
+  <main data-apb-erp></main>
+
+  <script src="js/core.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/pages/frontdesk.js"></script>
+  <script src="js/pages/frontdesk-more.js"></script>
+  <script src="js/pages/production.js"></script>
+  <script src="js/pages/finance.js"></script>
+  <script src="js/pages/customer.js"></script>
+  <script src="js/pages/reports.js"></script>
+  <script src="js/pages/system.js"></script>
+  <script src="js/smoke.js"></script>
+  <script src="js/e2e.js"></script>
+  <script>
+    if (new URLSearchParams(location.search).get('mode') === 'embedded') document.body.dataset.previewMode = 'embedded';
+    ERP.start(document.querySelector('[data-apb-erp]'));
+  </script>
+</body>
+</html>

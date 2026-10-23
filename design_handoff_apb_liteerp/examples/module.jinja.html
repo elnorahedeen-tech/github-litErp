@@ -1,0 +1,18 @@
+{# STRUCTURE EXAMPLE ONLY. The route and /static/liteerp/ assets are not installed. #}
+{% extends "base.html" %}
+{% block title %}订单管理 — LiteERP · AutoPrintBot{% endblock %}
+{% block extra_style %}
+<link rel="stylesheet" href="/static/liteerp/tokens.css">
+<link rel="stylesheet" href="/static/liteerp/apb-erp.css">
+{% endblock %}
+{% block content %}
+{% include "admin_nav.html" %}
+<main data-apb-erp>
+  <div class="apb-erp-pagehead"><h1>订单管理</h1></div>
+  <section class="apb-erp-panel" aria-labelledby="erp-orders-title">
+    <div class="apb-erp-panelhead"><h2 id="erp-orders-title">订单列表</h2></div>
+    <div class="apb-erp-panelbody">由 LiteERP 的已授权视图渲染订单内容。</div>
+  </section>
+  <div data-apb-erp-overlays></div>
+</main>
+{% endblock %}

@@ -1,0 +1,119 @@
+/* LiteERP 扩展组件（v2）。在 tokens.css、apb-erp.css 之后加载。
+ * 规则：全部限定在 [data-apb-erp] 内；只引用 --apb-erp-* token，不写死颜色；不改宿主全局样式。 */
+
+/* 页标题仅作路由切换后的焦点落点，不显示焦点框（非交互元素） */
+[data-apb-erp] h1[tabindex="-1"]:focus { outline: none; }
+
+/* 二级导航：模块内页面 */
+[data-apb-erp] .lerp-subnav { display: flex; flex-wrap: wrap; gap: var(--apb-erp-space-2); margin: calc(-1 * var(--apb-erp-space-3)) 0 var(--apb-erp-space-6); }
+[data-apb-erp] .lerp-subnav a {
+  display: inline-flex; align-items: center; min-height: 32px; padding: 4px 12px; border: 1px solid var(--apb-erp-line);
+  border-radius: 999px; color: var(--apb-erp-text); background: var(--apb-erp-surface); font-size: var(--apb-erp-table-size); text-decoration: none;
+}
+[data-apb-erp] .lerp-subnav a:hover { border-color: var(--apb-erp-primary-hover); color: var(--apb-erp-primary-hover); }
+[data-apb-erp] .lerp-subnav a[aria-current="page"] { color: var(--apb-erp-surface); background: var(--apb-erp-primary); border-color: var(--apb-erp-primary); font-weight: 600; }
+
+/* 页头操作区、面板头操作区 */
+[data-apb-erp] .lerp-headactions { display: flex; flex-wrap: wrap; gap: var(--apb-erp-space-2); align-items: center; }
+[data-apb-erp] .apb-erp-panelhead.lerp-split { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--apb-erp-space-4); flex-wrap: wrap; }
+
+/* 面板内页签（复用 nav 视觉，role=tablist） */
+[data-apb-erp] .lerp-tabs { display: flex; flex-wrap: wrap; gap: var(--apb-erp-space-4); padding: 0 var(--apb-erp-space-4); border-bottom: 1px solid var(--apb-erp-line); }
+[data-apb-erp] .lerp-tabs button { min-height: 40px; padding: 0; border: 0; border-bottom: 2px solid transparent; background: none; color: var(--apb-erp-muted); font: inherit; cursor: pointer; }
+[data-apb-erp] .lerp-tabs button[aria-selected="true"] { color: var(--apb-erp-primary-hover); border-bottom-color: var(--apb-erp-primary); font-weight: 700; }
+
+/* 表格扩展：分组表头、合计行、行内操作、选中行、紧凑行内输入 */
+[data-apb-erp] .apb-erp-table th[scope="colgroup"] { text-align: center; color: var(--apb-erp-text); border-left: 1px solid var(--apb-erp-line); }
+[data-apb-erp] .apb-erp-table tfoot td { font-weight: 700; background: var(--apb-erp-subtle); border-top: 1px solid var(--apb-erp-control-border); }
+[data-apb-erp] .apb-erp-table tr[aria-selected="true"] td { background: var(--apb-erp-danger-bg); }
+[data-apb-erp] .apb-erp-table td.lerp-actions { white-space: nowrap; }
+[data-apb-erp] .apb-erp-table td.lerp-actions > * + * { margin-left: var(--apb-erp-space-3); }
+[data-apb-erp] .apb-erp-table td .apb-erp-muted { display: block; }
+[data-apb-erp] .apb-erp-table.lerp-compact { min-width: 0; }
+[data-apb-erp] .apb-erp-table :is(input,select).apb-erp-input.lerp-cell { min-height: 32px; padding: 4px 8px; }
+[data-apb-erp] .lerp-linkbtn { padding: 0; border: 0; background: none; color: var(--apb-erp-primary-hover); font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+[data-apb-erp] .lerp-linkbtn:hover { color: var(--apb-erp-primary); }
+[data-apb-erp] .lerp-linkbtn[data-variant="danger"] { color: var(--apb-erp-danger); }
+[data-apb-erp] .lerp-batchbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--apb-erp-space-2); }
+
+/* 读取中：保持容器尺寸，不伪造进度 */
+[data-apb-erp] .lerp-loading { padding: var(--apb-erp-space-8); min-height: 200px; display: grid; place-content: center; gap: var(--apb-erp-space-2); color: var(--apb-erp-muted); text-align: center; }
+
+/* 选项组（复选/单选成组时使用 fieldset.lerp-fieldset + legend） */
+[data-apb-erp] fieldset.lerp-fieldset { display: grid; gap: var(--apb-erp-space-2); min-width: 0; margin: 0; padding: 0; border: 0; }
+[data-apb-erp] fieldset.lerp-fieldset > legend { padding: 0; margin-bottom: 6px; font-size: var(--apb-erp-table-size); font-weight: 600; color: var(--apb-erp-text); }
+
+/* 日期范围：预设 + 起止日期 */
+[data-apb-erp] .apb-erp-toolbar .apb-erp-field.lerp-daterangefield { flex: 3 1 520px; }
+[data-apb-erp] .lerp-daterange { flex-wrap: nowrap; }
+[data-apb-erp] .lerp-daterange > select { flex: 0 0 auto; width: auto; }
+[data-apb-erp] .lerp-daterange > input { flex: 1 1 120px; min-width: 120px; }
+
+/* 网格子项默认可收缩，避免宽表把页面撑出横向滚动 */
+[data-apb-erp] :is([role="tabpanel"], .lerp-section > *, .apb-erp-stack > *, .lerp-grid2 > *) { min-width: 0; }
+
+/* 多面板并排（宽屏两列，窄屏单列） */
+[data-apb-erp] .lerp-grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: var(--apb-erp-space-4); }
+
+/* 三列表单、表单分区 */
+[data-apb-erp] .apb-erp-formgrid.lerp-c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+[data-apb-erp] .apb-erp-formgrid .lerp-span2 { grid-column: span 2; }
+[data-apb-erp] .apb-erp-formgrid .lerp-spanall { grid-column: 1 / -1; }
+[data-apb-erp] .lerp-section { display: grid; gap: var(--apb-erp-space-4); }
+[data-apb-erp] .lerp-section > h2 { padding-bottom: var(--apb-erp-space-2); border-bottom: 1px solid var(--apb-erp-line); }
+[data-apb-erp] .apb-erp-form.lerp-wide { max-width: none; }
+[data-apb-erp] .lerp-checks { display: flex; flex-wrap: wrap; gap: var(--apb-erp-space-2) var(--apb-erp-space-4); }
+[data-apb-erp] input.lerp-radio, [data-apb-erp] .lerp-checks input[type="radio"] { width: 20px; height: 20px; min-height: 0; flex: none; margin: 0; padding: 0; accent-color: var(--apb-erp-primary); }
+[data-apb-erp] .lerp-checks label { display: inline-flex; align-items: center; gap: var(--apb-erp-space-2); font-weight: 400; cursor: pointer; }
+[data-apb-erp] .lerp-amount { font-family: var(--apb-erp-font-mono); font-variant-numeric: tabular-nums; text-align: right; }
+[data-apb-erp] .lerp-big { font-size: 28px; font-weight: 700; color: var(--apb-erp-ink); }
+
+/* 汇总数字（仅报表/财务确有意义时使用） */
+[data-apb-erp] .lerp-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--apb-erp-space-3); }
+[data-apb-erp] .lerp-summary > div { padding: var(--apb-erp-space-3) var(--apb-erp-space-4); border: 1px solid var(--apb-erp-line); border-radius: var(--apb-erp-control-radius); background: var(--apb-erp-surface); }
+[data-apb-erp] .lerp-summary dt { color: var(--apb-erp-muted); font-size: var(--apb-erp-caption-size); }
+[data-apb-erp] .lerp-summary dd { margin: 4px 0 0; font-size: 20px; font-weight: 700; font-family: var(--apb-erp-font-mono); font-variant-numeric: tabular-nums; color: var(--apb-erp-ink); }
+
+/* 卡片式入口（报表中心等目录页） */
+[data-apb-erp] .lerp-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--apb-erp-space-3); }
+[data-apb-erp] .lerp-cards a { display: grid; gap: var(--apb-erp-space-1); padding: var(--apb-erp-space-4); border: 1px solid var(--apb-erp-line); border-radius: var(--apb-erp-control-radius); background: var(--apb-erp-surface); color: var(--apb-erp-text); text-decoration: none; }
+[data-apb-erp] .lerp-cards a:hover { border-color: var(--apb-erp-primary-hover); }
+[data-apb-erp] .lerp-cards a strong { color: var(--apb-erp-ink); }
+
+/* 图表：系列用线型 + 图例文字区分，不用成功/错误色表示分类 */
+[data-apb-erp] .lerp-chart { padding: var(--apb-erp-space-4); }
+[data-apb-erp] .lerp-chart svg { display: block; width: 100%; height: auto; }
+[data-apb-erp] .lerp-legend { display: flex; flex-wrap: wrap; gap: var(--apb-erp-space-4); margin-bottom: var(--apb-erp-space-2); font-size: var(--apb-erp-caption-size); color: var(--apb-erp-muted); }
+
+/* 二维码占位（收款码样例） */
+[data-apb-erp] .lerp-qr { width: 168px; height: 168px; border: 8px solid var(--apb-erp-surface); outline: 1px solid var(--apb-erp-line); background: repeating-conic-gradient(var(--apb-erp-ink) 0 25%, var(--apb-erp-surface) 0 50%) 0 0 / 21px 21px; }
+
+/* 成功轻提示区（单一 role=status） */
+[data-apb-erp] .lerp-toast { position: fixed; right: 24px; bottom: 24px; z-index: 40; max-width: min(420px, calc(100vw - 32px)); }
+[data-apb-erp] .lerp-toast:empty { display: none; }
+[data-apb-erp] .lerp-toast > div { background: var(--apb-erp-surface); box-shadow: 0 8px 24px #1c191722; }
+
+/* 树（会计科目、权限） */
+[data-apb-erp] .lerp-tree { list-style: none; margin: 0; padding: 0; }
+[data-apb-erp] .lerp-tree ul { list-style: none; margin: 0; padding-left: var(--apb-erp-space-6); }
+[data-apb-erp] .lerp-tree li { padding: 2px 0; }
+
+/* 步骤（导入向导、流程） */
+[data-apb-erp] .lerp-steps { display: flex; flex-wrap: wrap; gap: var(--apb-erp-space-2); list-style: none; margin: 0; padding: 0; counter-reset: step; }
+[data-apb-erp] .lerp-steps li { counter-increment: step; display: inline-flex; gap: var(--apb-erp-space-2); align-items: center; padding: 4px 12px; border: 1px solid var(--apb-erp-line); border-radius: 999px; color: var(--apb-erp-muted); font-size: var(--apb-erp-table-size); }
+[data-apb-erp] .lerp-steps li::before { content: counter(step) "."; }
+[data-apb-erp] .lerp-steps li[aria-current="step"] { color: var(--apb-erp-primary-hover); border-color: var(--apb-erp-primary); font-weight: 700; }
+
+[data-apb-erp] dialog.apb-erp-dialog.lerp-wide { width: min(1080px, calc(100vw - 32px)); }
+
+@media (max-width: 760px) {
+  [data-apb-erp] .apb-erp-formgrid.lerp-c3 { grid-template-columns: 1fr; }
+  [data-apb-erp] .apb-erp-formgrid :is(.lerp-span2, .lerp-spanall) { grid-column: auto; }
+  [data-apb-erp] .lerp-subnav a { min-height: var(--apb-erp-touch-height); }
+  [data-apb-erp] .lerp-daterange { flex-wrap: wrap; }
+  [data-apb-erp] .lerp-daterange > select { flex: 1 1 100%; }
+  [data-apb-erp] .lerp-toast { right: 16px; bottom: 16px; }
+}
+
+/* 非 label 元素的字段标题（单选组等），与 .apb-erp-field > label 一致 */
+[data-apb-erp] .lerp-label { display: block; color: var(--apb-erp-text); font-size: var(--apb-erp-table-size); font-weight: 600; }

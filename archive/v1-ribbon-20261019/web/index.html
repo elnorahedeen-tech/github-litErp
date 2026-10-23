@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LiteERP 图文快印管理</title>
+  <link rel="stylesheet" href="css/erp.css">
+</head>
+<body>
+  <div id="app">
+    <header class="titlebar">
+      <span class="logo">LiteERP</span>
+      <span class="title" id="wintitle">前台业务中心 - 【管理员】综合-精诚图文广告</span>
+      <span class="user" id="usr"></span>
+    </header>
+    <nav class="ribbon-tabs" id="ribbon-tabs"></nav>
+    <div class="ribbon" id="ribbon"></div>
+    <div class="quickbar" id="quickbar"></div>
+    <div>
+      <div class="doctabs" id="doctabs"></div>
+    </div>
+    <main class="workspace" id="workspace">
+      <div class="empty-ws" id="empty-ws">
+        <div class="hero"><h2>LiteERP</h2><div>从上方功能区选择一个功能开始</div></div>
+      </div>
+    </main>
+    <footer class="statusbar" id="statusbar"></footer>
+  </div>
+
+  <script src="js/core.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/shell.js"></script>
+  <!-- 各模块页面：每个文件通过 ERP.page(id, …) 注册页面 -->
+  <script src="js/pages/frontdesk.js"></script>
+  <script src="js/pages/frontdesk-more.js"></script>
+  <script src="js/pages/production.js"></script>
+  <script src="js/pages/finance.js"></script>
+  <script src="js/pages/customer.js"></script>
+  <script src="js/pages/reports.js"></script>
+  <script src="js/pages/system.js"></script>
+</body>
+</html>

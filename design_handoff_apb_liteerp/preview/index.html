@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>订单管理 — LiteERP · APB 样式预览</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="host-reference.css">
+  <link rel="stylesheet" href="../assets/tokens.css">
+  <link rel="stylesheet" href="../assets/apb-erp.css">
+  <link rel="stylesheet" href="preview.css">
+  <script src="preview.js" defer></script>
+</head>
+<body>
+  <header class="admin-topbar">
+    <div class="admin-brand"><span class="admin-brand-mark">IC</span><span>AutoPrintBot 云端后台</span></div>
+    <div class="admin-top-spacer"></div><span class="admin-env">样式预览 · 虚构数据</span>
+  </header>
+  <nav class="admin-nav" aria-label="APB 主导航参考">
+    <div class="sidebar-brand"><span class="admin-brand-mark">IC</span><span class="sidebar-title">影彩信息</span></div>
+    <div class="nav-section">业务</div>
+    <a href="#orders" class="active" aria-label="LiteERP 订单管理" aria-current="page"><span class="nav-icon" aria-hidden="true">▦</span><span class="nav-label">LiteERP</span></a>
+    <p class="preview-nav-note">仅展示 ERP 接入位置。正式导航由 APB 提供。</p>
+  </nav>
+  <main data-apb-erp>
+    <div class="apb-erp-pagehead">
+      <div><p class="apb-erp-muted">业务 / LiteERP</p><h1 id="page-title" tabindex="-1">订单管理</h1><p class="apb-erp-muted">订单与生产进度分开记录，每个部件均可追溯。</p></div>
+      <span class="apb-erp-badge" data-tone="info">界面样例 v1.0</span>
+    </div>
+    <nav class="apb-erp-nav" aria-label="样例页面">
+      <a href="#orders" data-view="orders" aria-current="page">订单列表</a>
+      <a href="#form" data-view="form">表单规范</a>
+      <a href="#states" data-view="states">组件与状态</a>
+    </nav>
+    <section id="orders" class="apb-erp-stack" aria-label="订单列表示例">
+      <div class="apb-erp-notice" data-tone="info">这是离线样式样例，搜索、详情和表单可操作；数据为虚构，刷新即还原。</div>
+      <section class="apb-erp-panel" aria-labelledby="list-title">
+        <div class="apb-erp-panelhead"><h2 id="list-title">订单列表</h2><p class="apb-erp-muted">按更新时间倒序 · 北京时间（UTC+8）</p></div>
+        <form id="search-form" class="apb-erp-toolbar" novalidate>
+          <div class="apb-erp-field apb-erp-searchfield"><label for="order-search">搜索订单</label><div class="apb-erp-search"><input id="order-search" class="apb-erp-input" type="search" placeholder="订单号 / 客户名称" autocomplete="off"><button type="button" id="clear-search" class="apb-erp-btn apb-erp-clear" aria-label="清除搜索" hidden>×</button></div></div>
+          <div class="apb-erp-field"><label for="status-filter">APB 生产状态</label><select id="status-filter" class="apb-erp-input"><option value="">全部状态</option><option value="blocked">已暂停</option><option value="running">处理中</option><option value="complete">已完成</option><option value="pending">待接收</option></select></div>
+          <button type="submit" class="apb-erp-btn">筛选</button>
+        </form>
+        <div class="apb-erp-footer"><p id="selection-status" class="apb-erp-muted" role="status">未选择订单 · 仅选择当前页</p><p class="apb-erp-muted">窄屏可左右滚动查看全部列</p></div>
+        <div class="apb-erp-tablewrap" tabindex="0" role="region" aria-label="订单表格，可横向滚动">
+          <table class="apb-erp-table"><caption class="apb-erp-sr">虚构 ERP 订单与 APB 生产状态</caption>
+            <thead><tr><th class="apb-erp-check" scope="col"><input id="select-page" class="apb-erp-checkbox" type="checkbox" aria-label="选择当前页全部订单"></th><th scope="col">订单 / 客户</th><th scope="col">ERP 订单状态</th><th scope="col">APB 生产状态</th><th scope="col" class="apb-erp-number">部件数</th><th scope="col" class="apb-erp-number">订单金额（元）</th><th scope="col">更新时间</th><th scope="col">操作</th></tr></thead>
+            <tbody id="order-rows"></tbody>
+          </table>
+        </div>
+        <div id="no-results" class="apb-erp-empty" hidden><h3>没有符合条件的订单</h3><p class="apb-erp-muted">可以调整关键词，或清除当前筛选。</p><button id="reset-filters" type="button" class="apb-erp-btn">清除筛选</button></div>
+        <div class="apb-erp-footer"><p id="result-status" class="apb-erp-muted" role="status" aria-live="polite"></p><nav class="apb-erp-row" aria-label="订单分页"><button type="button" id="previous-page" class="apb-erp-btn">上一页</button><span id="page-number" class="apb-erp-muted"></span><button type="button" id="next-page" class="apb-erp-btn">下一页</button></nav></div>
+      </section>
+    </section>
+    <section id="form" class="apb-erp-stack" aria-label="客户表单示例" hidden>
+      <div class="apb-erp-notice" data-tone="info">表单演示：只校验必填项和日期格式。保存仅改变本页提示，不创建客户。</div>
+      <section class="apb-erp-panel"><div class="apb-erp-panelhead"><h2>客户资料</h2><p class="apb-erp-muted">带“必填”的字段需要填写，其余可稍后补充。</p></div>
+        <div class="apb-erp-panelbody"><form id="customer-form" class="apb-erp-form" novalidate>
+          <div id="form-error" class="apb-erp-notice" data-tone="danger" role="alert" hidden>尚未保存，请检查下面标出的字段；已填内容保留。</div>
+          <div class="apb-erp-formgrid">
+            <div class="apb-erp-field"><label for="customer-name">客户名称（必填）</label><input id="customer-name" name="customer_name" class="apb-erp-input" required maxlength="100" autocomplete="off" aria-describedby="name-help name-error"><span id="name-help" class="apb-erp-muted">可填写企业名或客户称呼，最多 100 个字符。</span><span id="name-error" class="apb-erp-error" hidden>请输入客户名称。</span></div>
+            <div class="apb-erp-field"><label for="customer-source">来源</label><select id="customer-source" class="apb-erp-input"><option>门店</option><option>线上</option><option>其他</option></select></div>
+            <div class="apb-erp-field"><label for="contact-date">下次联系日期</label><input id="contact-date" class="apb-erp-input" inputmode="numeric" placeholder="YYYY-MM-DD" maxlength="10" aria-describedby="date-help date-error"><span id="date-help" class="apb-erp-muted">例如 2026-10-21；按日期保存，不转换时区。</span><span id="date-error" class="apb-erp-error" hidden>请填写有效日期，例如 2026-10-21。</span></div>
+            <div class="apb-erp-field"><label for="customer-id">客户编号</label><input id="customer-id" class="apb-erp-input apb-erp-mono" value="DEMO-C0001" readonly aria-describedby="id-help"><span id="id-help" class="apb-erp-muted">由系统分配，可选中复制。</span></div>
+          </div>
+          <div class="apb-erp-field"><label for="customer-note">备注</label><textarea id="customer-note" class="apb-erp-input resize-none" maxlength="500" placeholder="填写对跟进有帮助的信息" aria-describedby="note-help"></textarea><span id="note-help" class="apb-erp-muted">最多 500 个字符。不要填写密码或访问凭证。</span></div>
+          <div class="apb-erp-formactions"><button type="submit" id="save-demo" class="apb-erp-btn" data-variant="primary"><span class="apb-erp-busy-slot" aria-hidden="true"></span><span>保存样例</span></button><a href="#orders" class="apb-erp-btn">返回列表</a></div>
+          <p id="save-status" role="status" aria-live="polite"></p>
+        </form></div>
+      </section>
+    </section>
+    <section id="states" class="apb-erp-stack" aria-label="组件状态示例" hidden>
+      <section class="apb-erp-panel"><div class="apb-erp-panelhead"><h2>状态与反馈</h2><p class="apb-erp-muted">颜色辅助识别，始终保留状态文字与处理原因。</p></div><div class="apb-erp-panelbody apb-erp-stack">
+        <div class="apb-erp-row"><span class="apb-erp-badge">待接收</span><span class="apb-erp-badge" data-tone="info">处理中</span><span class="apb-erp-badge" data-tone="success">已完成</span><span class="apb-erp-badge" data-tone="warning">已暂停</span><span class="apb-erp-badge" data-tone="danger">处理失败</span></div>
+        <div class="apb-erp-notice" data-tone="success">资料已保存。生产状态以 APB 回执为准。</div>
+        <div class="apb-erp-notice" data-tone="warning">连接尚未恢复，当前显示上次读取的结果。最近确认：2026-10-20 10:32（北京时间）。</div>
+        <div class="apb-erp-notice" data-tone="danger">订单读取失败。筛选条件已保留，可以稍后重试。错误编号：DEMO-READ-001。</div>
+        <div class="apb-erp-notice" data-tone="warning">此资料已被其他人修改。你的输入已保留；重新读取后再核对保存。</div>
+      </div></section>
+      <section class="apb-erp-panel"><div class="apb-erp-panelhead"><h2>按钮与权限提示</h2></div><div class="apb-erp-panelbody apb-erp-stack"><div class="apb-erp-row"><a class="apb-erp-btn" data-variant="primary" href="#form">填写客户资料</a><a class="apb-erp-btn" href="#orders">返回订单列表</a><button class="apb-erp-btn" type="button" disabled aria-describedby="permission-note">导出订单</button><button class="apb-erp-btn" type="button" aria-busy="true" disabled><span class="apb-erp-busy-slot" aria-hidden="true"></span>正在读取</button></div><p id="permission-note" class="apb-erp-muted">导出不可用：当前样例没有导出权限和数据接口。</p></div></section>
+      <section class="apb-erp-panel"><div class="apb-erp-empty"><h2>尚无订单</h2><p class="apb-erp-muted">新订单会显示在这里。首次为空与筛选无结果使用不同说明。</p></div></section>
+    </section>
+    <dialog id="detail-dialog" class="apb-erp-dialog" aria-labelledby="detail-title">
+      <div class="apb-erp-dialoghead"><div><p class="apb-erp-muted">订单详情 · 虚构样例</p><h2 id="detail-title"></h2></div><button id="close-detail" type="button" class="apb-erp-btn" autofocus>关闭</button></div>
+      <div class="apb-erp-stack"><dl id="detail-facts" class="apb-erp-kv"></dl>
+        <section class="apb-erp-panel"><div class="apb-erp-panelhead"><h3>部件与 Flow 执行记录</h3></div><div id="detail-body" class="apb-erp-panelbody apb-erp-stack"></div></section>
+        <p class="apb-erp-muted">ERP 保存、APB 接收、Flow 输出和打印回执是不同结果；缺少记录显示“未知”。</p>
+      </div>
+    </dialog>
+    <dialog id="discard-dialog" class="apb-erp-dialog" aria-labelledby="discard-title" aria-describedby="discard-description">
+      <div class="apb-erp-stack"><h2 id="discard-title">放弃未保存的修改？</h2><p id="discard-description">离开后，这次填写的样例内容将被清除。</p><div class="apb-erp-row"><button id="keep-editing" type="button" class="apb-erp-btn" data-variant="primary" autofocus>继续编辑</button><button id="discard-changes" type="button" class="apb-erp-btn">放弃修改</button></div></div>
+    </dialog>
+  </main>
+</body>
+</html>

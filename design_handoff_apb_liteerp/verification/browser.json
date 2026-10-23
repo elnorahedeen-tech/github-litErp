@@ -1,0 +1,28 @@
+{
+  "scope": "synthetic style preview, no ERP/APB backend",
+  "checks": [
+    "desktop shell and data table render",
+    "page selection, mixed checkbox, cleared selection and URL refresh",
+    "IME search, immediate clear, empty recovery and native select keyboard",
+    "detail, per-part unknown state, PDF box metadata, modal keyboard and focus return",
+    "validation, date-only leap year, input retention, stable busy and text-safe feedback",
+    "unsaved navigation keep/discard recovery",
+    "ERP styles do not change host button/input/table computed styles",
+    "1024x768 reflow and long form action reachability",
+    "760x640 reflow and long form action reachability",
+    "390x844 reflow and long form action reachability",
+    "720x500 reflow and long form action reachability",
+    "content-only mode, reduced motion and forced-colors render",
+    "no JS errors, no external requests and no mutations"
+  ],
+  "browser": "145.0.7632.6",
+  "status": "passed",
+  "external_requests": [],
+  "mutations": [],
+  "js_errors": [],
+  "limits": [
+    "Chromium only; no Safari/Firefox/touch hardware or screen reader certification",
+    "720x500 reflow approximates 200% viewport; not OS zoom certification",
+    "No production APIs/auth/ERP CRUD/printing tested"
+  ]
+}
