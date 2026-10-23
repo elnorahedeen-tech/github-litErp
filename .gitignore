@@ -9,4 +9,7 @@ Thumbs.db
 .idea/
 node_modules/
 /node_modules
+
+# Vue 工程构建输出（npm run build）
+/dist/
 __pycache__/
